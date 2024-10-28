@@ -1,17 +1,17 @@
 <nav class="navbar px-3">
     <div >
-        logo
+      <%=image_tag "youtube.svg"%>
     </div>
 
     <div>
     <div class="input-group">
-    <input type="text" class="form-control" placeholder="Pesquisar" aria-label="Recipient's username" aria-describedby="button-addon2">
-    <button class="btn btn-outline-secondary" type="button" id="button-addon2"> <%= image_tag 'search.svg' %> </button>
+    <input type="text" class="form-control" placeholder="Pesquisar" aria-label="Recipient's username" aria-describedby="button-addon2" style="border-bottom-left-radius:20px;border-top-left-radius:20px">
+    <button class="btn btn-outline-secondary" type="button" id="button-addon2" style="border-bottom-right-radius:20px;border-top-right-radius:20px"> <%= image_tag 'search.svg' %> </button>
   </div>
     </div>
 
     <div>
-    <button class="btn btn-primary">Fazer Login</button>
+    <button class="btn btn-outline-secondary" style="border-radius:20px"> <%=image_tag "person-circle.svg"%> Fazer Login</button>
     </div>
   
 
