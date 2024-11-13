@@ -31,3 +31,20 @@
     margin-left: 80px; /* Largura da sidebar */
     padding: 20px;
 }
+
+.main-search-bar {
+    width: 500px !important;
+    transition: all 0.25s;
+}
+
+@media (max-width: 740px) {
+    .main-search-bar {
+        width: 300px !important;
+    }
+}
+
+@media (max-width: 525px) {
+    .main-search-bar {
+        width: 180px !important;
+    }
+}

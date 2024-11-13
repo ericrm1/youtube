@@ -5,4 +5,6 @@ Rails.application.routes.draw do
   # root "articles#index"
 
   root "feed#index"
+
+  get "/watch", to: "video#watch", as: 'watch'
 end
