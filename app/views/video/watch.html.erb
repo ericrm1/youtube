@@ -7,33 +7,46 @@
             </div>
         </div>
         <div class="row mt-3">
-            <div class="col-1 my-auto">
-                <%= image_tag "person-circle.svg" %>
+            <div class="col-1 my-auto" style="max-width: 40px;">
+                <%= image_tag "Thumbnails.jpg", class: "watch-channel-image" %>
             </div>
-            <div class="col-2" style="display: flex; flex-direction: column">
-                <strong>Nome do Canal</strong>
+            <div class="col-2 watch-channel-title mx-3">
+                <strong><%= "Nome do Canal".upcase %></strong>
                 <small>1,11 mi de inscritos</small>
             </div>
             <div class="col-2 my-auto">
-                Inscrever-se
-            </div>
-            <div class="col-1 my-auto"> 
+                <button class="btn-watch-actions black-bg">Inscrever-se</button>
             </div>
             <div class="col-2 my-auto">
-                Likes/Deslikes
+                <button class="btn-watch-actions white-bg">Likes/Deslikes</button>
             </div>
             <div class="col-2 my-auto">
-                Compartilhar
+                <button class="btn-watch-actions white-bg">Compartilhar</button>
+            </div>
+            <div class="col-2 my-auto">
+                <button class="btn-watch-actions white-bg">Download</button>
             </div>
             <div class="col-1 my-auto">
-                Download
-            </div>
-            <div class="col-1 my-auto">
-                More
+                <button class="btn-watch-actions white-bg">
+                    <%= image_tag "3-dots.svg" %>
+                </button>
             </div>
         </div>
     </div>
-    <div class="col-4">
-        <h1>Lista de videos</h1>
+    <div class="col-4" style="display: flex; flex-direction: column">
+        <% (1..50).each do |number|  %>
+            <a href="/watch?v=<%= number %>" style="text-decoration: none">
+                <div class="thumbnail-suggested"> 
+                    <div class="thumbnail-suggested-image"> 
+                        <img src=" <%= asset_path ('Thumbnails.jpg') %>" alt="thumbnail"/>
+                    </div>
+                    <div class="thumbnail-suggested-infos">
+                        <h1>Como Reinventar o Computador do Zero </h1>
+                        <p>Infinitamente</p>
+                        <p>1,3 mi vizualizações • há 8 meses</p>
+                    </div>
+                </div>
+            </a>
+        <% end %> 
     </div>
 </div>

@@ -14,7 +14,7 @@
     @not_login_path = request.path != '/new_user' && request.path != '/login'
   %>
 
-  <body style="max-height:100%;">
+  <body class="modo-escuro" style="max-height:100%;">
     <!-- Navbar fixa no topo -->
     <% if @not_login_path %>
       <nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top">
