@@ -9,38 +9,46 @@
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
+  
+  <%  
+    @not_login_path = request.path != '/new_user' && request.path != '/login'
+  %>
 
   <body style="max-height:100%;">
     <!-- Navbar fixa no topo -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top">
-      <div class="container-fluid">
-        <div style="padding-left: 10px">
-          <a class="navbar-brand" href="#"><%= image_tag "youtube.svg" %></a>
-        </div>
-        <div>
-          <div class="input-group main-search-bar">
-            <input type="text" class="form-control" placeholder="Pesquisar" aria-label="Recipient's username" aria-describedby="button-addon2" style="border-bottom-left-radius:20px;border-top-left-radius:20px">
-            <button class="btn btn-outline-secondary" type="button" id="button-addon2" style="border-bottom-right-radius:20px;border-top-right-radius:20px"> <%= image_tag 'search.svg' %> </button>
+    <% if @not_login_path %>
+      <nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top">
+        <div class="container-fluid">
+          <div style="padding-left: 10px">
+            <a class="navbar-brand" href="#"><%= image_tag "youtube.svg" %></a>
+          </div>
+          <div>
+            <div class="input-group main-search-bar">
+              <input type="text" class="form-control" placeholder="Pesquisar" aria-label="Recipient's username" aria-describedby="button-addon2" style="border-bottom-left-radius:20px;border-top-left-radius:20px">
+              <button class="btn btn-outline-secondary" type="button" id="button-addon2" style="border-bottom-right-radius:20px;border-top-right-radius:20px"> <%= image_tag 'search.svg' %> </button>
+            </div>
+          </div>
+
+          <div>
+          <%= link_to login_path, class: "btn btn-outline-secondary", style: "border-radius:20px" do %>
+            <%= image_tag "person-circle.svg" %> Fazer Login
+          <% end %>
           </div>
         </div>
+      </nav>
 
-        <div>
-          <button class="btn btn-outline-secondary" style="border-radius:20px"> <%=image_tag "person-circle.svg"%> Fazer Login</button>
-        </div>
+      <!-- Sidebar fixa na esquerda -->
+      <div class="sidebar">
+        <a href="#">
+          <%= image_tag "home.svg", class: "my-3" %>
+          Início
+        </a>
+        <a href="#">
+          <%= image_tag "person-circle.svg", class: "my-3" %>
+          Perfil
+        </a>
       </div>
-    </nav>
-
-    <!-- Sidebar fixa na esquerda -->
-    <div class="sidebar">
-      <a href="#">
-        <%= image_tag "home.svg", class: "my-3" %>
-        Início
-      </a>
-      <a href="#">
-        <%= image_tag "person-circle.svg", class: "my-3" %>
-        Perfil
-      </a>
-    </div>
+    <% end %>
 
     <div class="content">
       <%= yield %>

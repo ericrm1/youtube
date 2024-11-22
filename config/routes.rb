@@ -7,4 +7,6 @@ Rails.application.routes.draw do
   root "feed#index"
 
   get "/watch", to: "video#watch", as: 'watch'
+  get "/login", to: "user#login", as: 'login'
+  get "/new_user", to: "user#new", as: 'new'
 end
