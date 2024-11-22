@@ -16,12 +16,14 @@
 
   <body class="modo-escuro" style="max-height:100%;">
     <!-- Navbar fixa no topo -->
-    <% if @not_login_path %>
+    
       <nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top">
         <div class="container-fluid">
           <div style="padding-left: 10px">
-            <a class="navbar-brand" href="#"><%= image_tag "youtube.svg" %></a>
+            <a class="navbar-brand" href="/"><%= image_tag "youtube.svg" %></a>
           </div>
+
+          <% if @not_login_path %>
           <div>
             <div class="input-group main-search-bar">
               <input type="text" class="form-control" placeholder="Pesquisar" aria-label="Recipient's username" aria-describedby="button-addon2" style="border-bottom-left-radius:20px;border-top-left-radius:20px">
@@ -34,9 +36,12 @@
             <%= image_tag "person-circle.svg" %> Fazer Login
           <% end %>
           </div>
+          <% end %>
         </div>
       </nav>
+      
 
+      <% if @not_login_path %>
       <!-- Sidebar fixa na esquerda -->
       <div class="sidebar">
         <a href="#">
