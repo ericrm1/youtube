@@ -76,3 +76,69 @@
     margin-top: 0;
     margin-bottom: 0;
 }
+
+
+
+
+/* Thumbail for Suggested - Watch Route */
+
+.thumbnail-suggested {
+    margin-right: 0px; 
+    max-width: 100%;
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 20px;
+}
+
+.thumbnail-suggested-image {
+    width: 170px; 
+    max-width: 170px;
+    min-width: 170px;
+    position: relative;
+}
+
+.thumbnail-suggested-image img {
+    width: 100%;
+    height: 100%;
+    border-radius: 13px;
+    object-fit: cover;
+    transition: all .3s;
+}
+
+.thumbnail-suggested-image img:hover {
+    border-radius: 0;
+}
+
+.thumbnail-suggested-infos {
+    margin-left: 8px;
+}
+
+.thumbnail-suggested-infos h1 {
+    margin: 0 0 4px 0;
+    font-size: 1rem;
+    line-height: 2rem;
+    font-weight: 500;
+    overflow: hidden;
+    display: inline-block;
+    max-height: 4rem;
+    white-space: nowrap;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    text-overflow: ellipsis;
+    white-space: normal;
+    text-decoration: none !important;
+    color: #000;
+}
+
+.thumbnail-suggested-infos p {
+    font-size: 0.65rem;
+    font-weight: 400;
+    overflow: hidden;
+    display: block;
+    max-height: 1.8rem;
+    -webkit-line-clamp: 1;
+    display: flexbox;
+    display: flex;
+    color: #606060;
+    margin: 0 !important;
+}
