@@ -9,4 +9,7 @@ Rails.application.routes.draw do
   get "/watch", to: "video#watch", as: 'watch'
   get "/login", to: "user#login", as: 'login'
   get "/new_user", to: "user#new", as: 'new'
+
+  post '/login', to: 'sessions#login'
+  delete '/logout', to: 'sessions#logout'
 end
