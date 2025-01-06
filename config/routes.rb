@@ -12,6 +12,6 @@ Rails.application.routes.draw do
 
   post '/login', to: 'sessions#login'
   delete '/logout', to: 'sessions#logout'
-  post "/new_user", to: "user#create", as: :users
+  post "/new_user", to: "user#create", as: 'users'
 end
 
