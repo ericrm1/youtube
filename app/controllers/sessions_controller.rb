@@ -1,21 +1,21 @@
 class SessionsController < ApplicationController
     def login
-        user = User.find_by(email: params[:email])
+        channel = Channel.find_by(email: params[:email])
       
-        if user&.authenticate(params[:password])
+        if channel&.authenticate(params[:password])
           # Login bem-sucedido
-          session[:user_id] = user.id
+          session[:channel_id] = channel.id
           flash[:notice] = "Login feito com sucesso!"
-          redirect_to watch_path # Ajuste para o caminho que você deseja redirecionar
+          redirect_to root_path # Ajuste para o caminho que você deseja redirecionar
         else
           # Falha no login
-          flash[:alert] = user.nil? ? "Usuário não encontrado. Tente novamente ou crie uma conta." : "Senha incorreta."
-          render 'user/new' # Ao invés de redirecionar, renderize novamente o formulário de login
+          flash[:alert] = channel.nil? ? "Usuário não encontrado. Tente novamente ou crie uma conta." : "Senha incorreta."
+          render 'channel/new' # Ao invés de redirecionar, renderize novamente o formulário de login
         end
       end
   
     def logout
-      session[:user_id] = nil # Corrigido `nil`
+      session[:channel_id] = nil # Corrigido `nil`
       render json: { message: 'Logout realizado com sucesso' }, status: :ok
     end
   end

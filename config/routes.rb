@@ -7,11 +7,11 @@ Rails.application.routes.draw do
   root "feed#index"
 
   get "/watch", to: "video#watch", as: 'watch'
-  get "/login", to: "user#login", as: 'login'
-  get "/new_user", to: "user#new", as: 'new'
+  get "/login", to: "channel#login", as: 'login'
+  get "/new_channel", to: "channel#new", as: 'new'
 
   post '/login', to: 'sessions#login'
   delete '/logout', to: 'sessions#logout'
-  post "/new_user", to: "user#create", as: 'users'
+  post "/new_channel", to: "channel#create", as: 'channels'
 end
 
