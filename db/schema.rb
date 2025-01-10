@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2025_01_06_233103) do
+ActiveRecord::Schema[7.0].define(version: 2025_01_10_123019) do
   create_table "channels", force: :cascade do |t|
     t.string "name"
     t.string "email"
@@ -20,4 +20,17 @@ ActiveRecord::Schema[7.0].define(version: 2025_01_06_233103) do
     t.index ["email"], name: "index_channels_on_email", unique: true
   end
 
+  create_table "videos", force: :cascade do |t|
+    t.string "title"
+    t.text "description"
+    t.string "subtitle"
+    t.integer "likes"
+    t.integer "dislikes"
+    t.integer "channel_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["channel_id"], name: "index_videos_on_channel_id"
+  end
+
+  add_foreign_key "videos", "channels"
 end

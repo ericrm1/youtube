@@ -16,6 +16,6 @@ class SessionsController < ApplicationController
   
     def logout
       session[:channel_id] = nil # Corrigido `nil`
-      render json: { message: 'Logout realizado com sucesso' }, status: :ok
+      redirect_to root_path 
     end
   end

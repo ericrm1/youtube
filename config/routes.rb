@@ -11,7 +11,10 @@ Rails.application.routes.draw do
   get "/new_channel", to: "channel#new", as: 'new'
 
   post '/login', to: 'sessions#login'
-  delete '/logout', to: 'sessions#logout', as: :logout
+  get '/logout', to: 'sessions#logout', as: :logout
   post "/new_channel", to: "channel#create", as: 'channels'
+
+  get '/video/new', to: 'video#new', as: 'new_video'
+  post '/video/create', to: 'video#create', as: 'create_video'
 end
 
