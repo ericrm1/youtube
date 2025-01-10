@@ -32,9 +32,15 @@
           </div>
 
           <div>
-          <%= link_to login_path, class: "btn btn-outline-secondary", style: "border-radius:20px" do %>
-            <%= image_tag "person-circle.svg" %> Fazer Login
-          <% end %>
+            <%if logged? == false %>
+                <%= link_to login_path, class: "btn btn-outline-secondary", style: "border-radius:20px" do %>
+                  <%= image_tag "person-circle.svg" %> Fazer Login
+                <% end %>
+            <%elsif logged? == true%>
+                <%= link_to  logout_path, method: :delete, class: "btn btn-outline-secondary", style: "border-radius:20px" do %>
+                    <%= image_tag "door.svg" %> logout
+                <% end %>
+            <% end %>
           </div>
           <% end %>
         </div>

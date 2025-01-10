@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   get "/new_channel", to: "channel#new", as: 'new'
 
   post '/login', to: 'sessions#login'
-  delete '/logout', to: 'sessions#logout'
+  delete '/logout', to: 'sessions#logout', as: :logout
   post "/new_channel", to: "channel#create", as: 'channels'
 end
 
