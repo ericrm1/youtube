@@ -20,7 +20,7 @@ class ChannelController < ApplicationController
     private
     
     def channel_params
-      params.require(:channel).permit(:name, :email, :password, :password_confirmation)
+      params.require(:channel).permit(:name, :email, :password, :password_confirmation, :photo)
     end
   end
   

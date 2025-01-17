@@ -1,7 +1,12 @@
 <div class="container_login"> 
     <h1 class="title_login"> Criar conta </h1>
-    <form action="/new_channel" method="post">
+    <form action="/new_channel" method="post" enctype="multipart/form-data">
         <!-- Adiciona token CSRF para segurança -->
+        <% flash.each do |nome, mensagem| %>
+            <div class="<%=nome%>">
+                <%=mensagem%>
+            </div>
+        <% end %>
         <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
 
         <div class="form-group mt-3">
@@ -22,6 +27,12 @@
         <div class="form-group mt-3">
             <label for="password_confirmation">Confirmar Senha</label>
             <input type="password" class="form-control" id="password_confirmation" name="channel[password_confirmation]" placeholder="Senha">
+        </div>
+
+        <div class="form-group mt-3">
+            
+            <label for="formFileMultiple" class="form-label">Foto</label>
+            <input class="form-control" type="file" id="photo" multiple name="channel[photo]" required accept="image/jpeg, .png"/>
         </div>
 
         <div class="mt-3">

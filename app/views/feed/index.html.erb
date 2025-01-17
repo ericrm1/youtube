@@ -9,12 +9,16 @@
           <% if video.thumbnail.attached? %>
             <%= image_tag url_for(video.thumbnail), alt: "Thumbnail"%>
           <% else %>
-           <%= image_tag "placeholder-thumbnail.jpg", alt: "Placeholder Thumbnail" %>
+           <%= image_tag "Thumbnails.jpg", alt: "Placeholder Thumbnail" %>
          <% end %>
         </div>
         <div class="thumbnail-infos">
           <div class="thumbnail-channel">
+            <% if video.channel.photo.attached? %>
+            <%= image_tag url_for(video.channel.photo), alt: "Photo"%>
+          <% else %>
             <%= image_tag "person-circle.svg" %>
+         <% end %>
           </div>
           <div class="thumbnail-details">
             <h1><%= video.title%></h1>
