@@ -1,17 +1,17 @@
 <div class="row">
     <div class="col-8">
-        <img src=" <%= asset_path ('Thumbnails.jpg') %>" style="width: 100%; height: auto; border-radius: 13px" alt="thumbnail"/>
+        <%= video_tag url_for(@video.file),  controls: true, style:'width: 100%; max-heigth: 100px '  %>
         <div class="row">
             <div class="col-12 mt-3 video-watch-title">
-                Como Reinventar o Computador do Zero afdnuaf euinfu  ibea sufbueafau asfasf asdf asd fasdf asdf asdfasdf asdf  aFSf asf asf
+               <%= @video.title %>
             </div>
         </div>
         <div class="row mt-3">
             <div class="col-1 my-auto" style="max-width: 40px;">
-                <%= image_tag "Thumbnails.jpg", class: "watch-channel-image" %>
+                 <img src=" <%= asset_path ('Thumbnails.jpg') %>" style="width: 100%; height: auto; border-radius: 13px" alt="thumbnail"/>
             </div>
             <div class="col-2 watch-channel-title mx-3">
-                <strong><%= "Nome do Canal".upcase %></strong>
+                <strong><%= @video.channel.name%></strong>
                 <small>1,11 mi de inscritos</small>
             </div>
             <div class="col-2 my-auto">
@@ -53,14 +53,14 @@
         </div>
     </div>
     <div class="col-4" style="display: flex; flex-direction: column">
-        <% (1..50).each do |number|  %>
-            <a href="/watch?v=<%= number %>" style="text-decoration: none">
+        <% @related_videos.each do |video|  %>
+            <a href="/watch?v=<%= video.id %>" style="text-decoration: none">
                 <div class="thumbnail-suggested"> 
                     <div class="thumbnail-suggested-image"> 
                         <img src=" <%= asset_path ('Thumbnails.jpg') %>" alt="thumbnail"/>
                     </div>
                     <div class="thumbnail-suggested-infos">
-                        <h1>Como Reinventar o Computador do Zero </h1>
+                        <h1> <%= video.title %> </h1>
                         <p>Infinitamente</p>
                         <p>1,3 mi vizualizações • há 8 meses</p>
                     </div>

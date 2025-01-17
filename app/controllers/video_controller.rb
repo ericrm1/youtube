@@ -1,5 +1,8 @@
 class VideoController < ApplicationController
   def watch
+    @video = Video.find_by(id: params[:v]) # Encontra o vídeo pelo ID passado no parâmetro `v`
+    @related_videos = Video.where.not(id: @video.id).limit(5) if @video # Busca outros vídeos relacionados
+    
   end 
 
   def new
