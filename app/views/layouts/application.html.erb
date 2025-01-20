@@ -66,6 +66,12 @@
           <%= image_tag "person-circle.svg", class: "my-3" %>
           Perfil
         </a>
+        <% if logged? == true %>
+        <a href="/history">
+          <%= image_tag "history.svg", class: "my-3" %>
+          Histórico
+        </a>
+        <% end %>
       </div>
     <% end %>
 

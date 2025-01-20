@@ -19,6 +19,11 @@ class VideoController < ApplicationController
     end
   end
 
+  def show
+    @video = Video.find(params[:id])
+    History.find_or_create_by(channel: current_channel, video: @video)
+  end
+
   private
   def video_params
     params.require(:video).permit(:title, :subtitle, :description, :file, :thumbnail)

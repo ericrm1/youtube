@@ -17,6 +17,10 @@ class ChannelController < ApplicationController
       end
     end 
   
+    def history
+      @watched_videos = logged_channel.watched_videos
+    end
+
     private
     
     def channel_params
