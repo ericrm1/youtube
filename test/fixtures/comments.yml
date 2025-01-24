@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  video: one
+  channel: one
+  content: MyText
+  parent_id: 1
+
+two:
+  video: two
+  channel: two
+  content: MyText
+  parent_id: 1

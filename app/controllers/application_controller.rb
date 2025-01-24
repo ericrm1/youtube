@@ -9,4 +9,10 @@ class ApplicationController < ActionController::Base
         channel = Channel.find_by_id(session[:channel_id])
         return channel
     end
+
+    helper_method :current_channel
+
+ 
+
+
 end

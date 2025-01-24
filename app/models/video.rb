@@ -6,6 +6,8 @@ class Video < ApplicationRecord
   
   has_many :histories
   has_many :watching_channels, through: :histories, source: :channel
+  
+  has_many :comments
 
   validates :title, presence: true
   validates :thumbnail, presence: true
