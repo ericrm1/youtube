@@ -1,10 +1,13 @@
 class CommentsController < ApplicationController
+  before_action :require_login
 
     def new 
       @comment = Comment.new        
     end 
   
     def create 
+
+
       @comment = Comment.new(comment_params)
       @comment.channel_id = logged_channel.id 
   
@@ -15,7 +18,13 @@ class CommentsController < ApplicationController
         Rails.logger.debug("Erro ao salvar comentário: #{@comment.errors.full_messages}")
         
       end 
-    end 
+    end
+    
+    def require_login
+      unless logged?
+        redirect_to login_path, alert: 'Você precisa estar logado para acessar esta página.'
+      end
+    end
   
     private 
   
