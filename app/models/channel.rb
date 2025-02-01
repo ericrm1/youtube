@@ -4,10 +4,16 @@ class Channel < ApplicationRecord
 
     has_many :videos
     has_many :histories
-    has_many :watched_videos, through: :histories , source: :video
-    
 
     validates :name, presence: true
     validates :email,presence:true
     validates :password, presence: true, length: {minimum: 6 }
+
+    def watched_videos
+        videos = []
+        histories.each do |history|
+            videos << history.video
+        end
+        return videos 
+    end
 end

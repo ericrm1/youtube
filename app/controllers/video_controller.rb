@@ -2,8 +2,10 @@ class VideoController < ApplicationController
   def watch
     @video = Video.find_by(id: params[:v]) # Encontra o vídeo pelo ID passado no parâmetro `v`
     @related_videos = Video.where.not(id: @video.id).limit(5) if @video # Busca outros vídeos relacionados
-    
-  end 
+    if logged? 
+      History.create(channel_id: (logged_channel.id), video_id: (@video.id))
+    end 
+  end
 
   def new
   end
@@ -19,10 +21,14 @@ class VideoController < ApplicationController
     end
   end
 
-  def show
-    @video = Video.find(params[:id])
-    History.find_or_create_by(channel: current_channel, video: @video)
-  end
+  # def show
+  #   @video = Video.find(params[:id])
+
+  #   if logged? && logged_channel
+  #   history = History.find_or_create_by(channel: logged_channel, video: @video)
+  #   history.touch
+  #   end
+  # end
 
   private
   def video_params

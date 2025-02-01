@@ -1,4 +1,6 @@
 class ChannelController < ApplicationController
+before_action :authenticate, only: :history
+
     def login
     end
   
@@ -18,7 +20,7 @@ class ChannelController < ApplicationController
     end 
   
     def history
-      @watched_videos = logged_channel.watched_videos
+        @watched_videos = logged_channel.watched_videos
     end
 
     private
