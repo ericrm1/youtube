@@ -3,6 +3,7 @@ class Channel < ApplicationRecord
     has_one_attached :photo
 
     has_many :videos
+    has_many :comments
     has_many :histories
 
     validates :name, presence: true

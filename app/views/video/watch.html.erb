@@ -74,3 +74,51 @@
         <% end %> 
     </div>
 </div>
+
+<div class="card-body col-8">
+  <h4 class="card-title">Comentários</h4>
+
+   <form action="/comments/create" method="post">
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+    <input type="hidden" name="comment[video_id]" value="<%= @video.id %>">
+    <input type="text" class="form-control mt-10 " placeholder="Digite seu comentário aqui" name="comment[content]">
+    <button type="submit" class="btn btn-secondary mt-10 float-end ">Enviar</button>
+  </form>
+
+
+                <% @comments.each do |comment| %>
+                <div class="comment-widgets mb-20 mt-3">
+                  <div class="d-flex flex-row comment-row">
+                    <div class="p-2">
+                      <span class="round" style="max-width: 40px;">
+                        <% if comment.channel&.photo&.attached? %>
+                          <%= image_tag url_for(comment.channel.photo), alt: "Photo", style: "width: 40px; height: 40px; border-radius: 50%" %>
+                        <% else %>
+                          <%= image_tag "person-circle.svg" %>
+                        <% end %>
+                      </span>
+                    </div>
+                    <div class="comment-text w-100">
+                      <h5><%= comment.channel.name %></h5>
+                      <div class="comment-footer d-flex justify-content-between align-items-center">
+                        
+                        <div class="action-icons">
+                          <a href="#" aria-label="Editar comentário" data-abc="true">
+                            <i class="fa fa-pencil" aria-hidden="true"></i>
+                          </a>
+                          <a href="#" aria-label="Recarregar comentário" data-abc="true">
+                            <i class="fa fa-rotate-right" aria-hidden="true"></i>
+                          </a>
+                          <a href="#" aria-label="Curtir comentário" data-abc="true">
+                            <i class="fa fa-heart" aria-hidden="true"></i>
+                          </a>
+                        </div>
+                      </div>
+                      <p ><%= comment.content %></p> 
+                    </div>
+                  </div>
+                </div>
+              <% end %>
+      </div>
+    </div>
+  </div>

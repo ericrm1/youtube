@@ -2,16 +2,25 @@
 <div class="thumbnail-container">
 
     <% # (1..10) == [1,2,3,4,5,6,7,8,9,10].each  %>
-    <% if @watched_videos.present?  %>
-      <% @watched_videos.each do |video|  %>
-        <a href="/watch?v=<%= video.id %>">
-          <div class="thumbnail"> 
-            <div class="thumbnail-image"> 
-              <% if video.thumbnail.attached? %>
-                <%= image_tag url_for(video.thumbnail), alt: "Thumbnail"%>
-              <% else %>
-              <%= image_tag "Thumbnails.jpg", alt: "Placeholder Thumbnail" %>
-            <% end %>
+    <% @watched_videos.each do |video|  %>
+      <% puts "*******************************************************************************************************************************" %> 
+      <% puts "Video ID: #{video.id}, Title: #{video.title}" %>
+      <a href="/watch?v=<%= video.id %>">
+        <div class="thumbnail"> 
+          <div class="thumbnail-image"> 
+            <% if video.thumbnail.attached? %>
+              <%= image_tag url_for(video.thumbnail), alt: "Thumbnail"%>
+            <% else %>
+             <%= image_tag "Thumbnails.jpg", alt: "Placeholder Thumbnail" %>
+           <% end %>
+          </div>
+          <div class="thumbnail-infos">
+            <div class="thumbnail-channel">
+              <% if video.channel.photo.attached? %>
+              <%= image_tag url_for(video.channel.photo), alt: "Photo"%>
+            <% else %>
+              <%= image_tag "person-circle.svg" %>
+           <% end %>
             </div>
             <div class="thumbnail-infos">
               <div class="thumbnail-channel">

@@ -22,4 +22,9 @@ class ApplicationController < ActionController::Base
         @video = Video.find(params[:id])
         return video
     end
+    helper_method :current_channel
+
+ 
+
+
 end

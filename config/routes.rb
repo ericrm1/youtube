@@ -6,7 +6,7 @@ Rails.application.routes.draw do
 
   root "feed#index"
 
-  get "/watch", to: "video#watch", as: 'watch'
+ get '/watch', to: 'video#watch', as: 'video_watch'
   get "/login", to: "channel#login", as: 'login'
   get "/new_channel", to: "channel#new", as: 'new'
 
@@ -18,5 +18,10 @@ Rails.application.routes.draw do
   post '/video/create', to: 'video#create', as: 'create_video'
 
   get '/history', to: 'channel#history', as: 'history_channel'
+
+  get '/comments/new', to: 'comments#new'
+  post '/comments/create', to: 'comments#create', as: 'create_comment' 
+  
+  
 end
 
