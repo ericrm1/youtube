@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2025_01_24_020331) do
+ActiveRecord::Schema[7.0].define(version: 2025_02_02_125035) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -67,6 +67,16 @@ ActiveRecord::Schema[7.0].define(version: 2025_01_24_020331) do
     t.index ["video_id"], name: "index_histories_on_video_id"
   end
 
+  create_table "ratings", force: :cascade do |t|
+    t.integer "channel_id", null: false
+    t.integer "video_id", null: false
+    t.integer "value"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["channel_id"], name: "index_ratings_on_channel_id"
+    t.index ["video_id"], name: "index_ratings_on_video_id"
+  end
+
   create_table "videos", force: :cascade do |t|
     t.string "title"
     t.text "description"
@@ -85,5 +95,7 @@ ActiveRecord::Schema[7.0].define(version: 2025_01_24_020331) do
   add_foreign_key "comments", "videos"
   add_foreign_key "histories", "channels"
   add_foreign_key "histories", "videos"
+  add_foreign_key "ratings", "channels"
+  add_foreign_key "ratings", "videos"
   add_foreign_key "videos", "channels"
 end

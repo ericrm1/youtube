@@ -25,9 +25,19 @@
             <div class="col-2 my-auto">
                 <button class="btn-watch-actions black-bg">Inscrever-se</button>
             </div>
-            <div class="col-2 my-auto">
-                <button class="btn-watch-actions white-bg">Likes/Deslikes</button>
+
+            <div class="col-1 my-auto">
+              <%= button_to like_video_path(@video), method: :post, class: "btn-watch-actions white-bg" do %>
+                <%= image_tag "hand-thumbs-up"%> <%= @video.likes_count %> 
+              <% end %>
             </div>
+
+            <div class="col-1 my-auto">
+              <%= button_to dislike_video_path(@video), method: :post, class: "btn-watch-actions white-bg" do %>
+                <%= image_tag "hand-thumbs-down"%> <%=@video.dislikes_count %> 
+              <% end %>
+            </div>
+
             <div class="col-2 my-auto">
                 <button class="btn-watch-actions white-bg">Compartilhar</button>
             </div>

@@ -22,6 +22,7 @@ Rails.application.routes.draw do
   get '/comments/new', to: 'comments#new'
   post '/comments/create', to: 'comments#create', as: 'create_comment' 
   
-  
+  post '/video/:id/like', to: 'ratings#like', as: 'like_video'
+  post '/video/:id/dislike', to: 'ratings#dislike', as: 'dislike_video'
 end
 

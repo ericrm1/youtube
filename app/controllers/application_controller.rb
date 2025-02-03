@@ -2,6 +2,7 @@ class ApplicationController < ActionController::Base
     helper_method :logged?
     helper_method :logged_channel 
     helper_method :show
+    helper_method :watching_video
 
     def logged?
         session[:channel_id].present?
@@ -20,9 +21,9 @@ class ApplicationController < ActionController::Base
 
     def watching_video
         @video = Video.find(params[:id])
-        return video
+        return @video
     end
-    helper_method :current_channel
+    
 
  
 

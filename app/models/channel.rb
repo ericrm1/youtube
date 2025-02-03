@@ -5,6 +5,7 @@ class Channel < ApplicationRecord
     has_many :videos
     has_many :comments
     has_many :histories
+    has_many :ratings, dependent: :destroy
 
     validates :name, presence: true
     validates :email,presence:true
