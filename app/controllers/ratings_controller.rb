@@ -24,7 +24,7 @@ class RatingsController < ApplicationController
             rating.destroy 
         else
             rating.update(value: value)
-            redirect_to video_watch_path 
+            redirect_to video_watch_path(v: @video.id)
         end
     end
 end

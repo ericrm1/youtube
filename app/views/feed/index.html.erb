@@ -23,7 +23,7 @@
           <div class="thumbnail-details">
             <h1><%= video.title%></h1>
             <p><%= video.channel.name%></p>
-            <p>1,3 mi vizualizações • há 8 meses</p>
+            <p> <%= video.views_count_string %> • <%= video.time_count_string %> </p>
           </div>
         </div>
       </div>
