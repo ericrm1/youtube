@@ -12,7 +12,7 @@ class CommentsController < ApplicationController
       @comment.channel_id = logged_channel.id 
   
       if @comment.save
-        redirect_to video_watch_path(@comment.video_id), notice: 'Comentário criado com sucesso.'
+        redirect_to video_watch_path(v:@comment.video_id), notice: 'Comentário criado com sucesso.'
 
       else
         Rails.logger.debug("Erro ao salvar comentário: #{@comment.errors.full_messages}")
