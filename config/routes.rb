@@ -24,5 +24,8 @@ Rails.application.routes.draw do
   
   post '/video/:id/like', to: 'ratings#like', as: 'like_video'
   post '/video/:id/dislike', to: 'ratings#dislike', as: 'dislike_video'
+
+  post '/channel/:id/subscribe', to: 'subscriptions#subscribe', as: 'subscribe_channel'
+  delete '/channel/:id/unsubscribe', to: 'subscriptions#unsubscribe', as: 'unsubscribe_channel'
 end
 

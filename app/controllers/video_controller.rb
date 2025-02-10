@@ -1,6 +1,7 @@
 class VideoController < ApplicationController
   def watch
     @video = Video.find_by(id: params[:v]) # Encontra o vídeo pelo ID passado no parâmetro `v`
+   
     
     if @video.nil?
       redirect_to root_path, alert: 'Vídeo não encontrado.'
@@ -13,6 +14,8 @@ class VideoController < ApplicationController
     if logged?
       History.create(channel_id: logged_channel.id, video_id: @video.id)
     end
+    @channel = @video.channel 
+  
   end
 
   def new
