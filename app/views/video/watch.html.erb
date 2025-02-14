@@ -34,6 +34,11 @@
             <div class="col-2 my-auto">
                 <button class="btn-watch-actions black-bg">Inscrever-se</button>
             </div>
+                <% if logged_channel && logged_channel.subscribed_channels.include?(@channel) %>
+                  <%= button_to 'Cancelar Inscrição', unsubscribe_channel_path(@channel), method: :delete, class: "btn-watch-actions black-bg" %>
+                <% else %>
+                  <%= button_to 'Inscrever-se', subscribe_channel_path(@channel), method: :post, class: "btn-watch-actions black-bg" %>
+               <% end %>
 
             <div class="col-1 my-auto">
               <%= button_to like_video_path(@video), method: :post, class: "btn-watch-actions white-bg" do %>
@@ -105,7 +110,7 @@
   </form>
 
 
-                <% @comments.each do |comment| %>
+                <% @comments.reverse_each do |comment| %>
                 <div class="comment-widgets mb-20 mt-3">
                   <div class="d-flex flex-row comment-row">
                     <div class="p-2">
