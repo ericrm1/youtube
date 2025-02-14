@@ -23,9 +23,9 @@
                 <small>1,11 mi de inscritos</small>
               </div>
                 <% if logged_channel && logged_channel.subscribed_channels.include?(@channel) %>
-                  <%= button_to 'Cancelar Inscrição', unsubscribe_channel_path(@channel), method: :delete, class: "btn-watch-actions black-bg" %>
+                  <%= button_to 'Cancelar Inscrição', unsubscribe_channel_path(@channel, video_id: @video.id), method: :delete, class: "btn-watch-actions black-bg" %>
                 <% else %>
-                  <%= button_to 'Inscrever-se', subscribe_channel_path(@channel), method: :post, class: "btn-watch-actions black-bg" %>
+                  <%= button_to 'Inscrever-se', subscribe_channel_path(@channel, video_id: @video.id), method: :post, class: "btn-watch-actions black-bg" %>
                <% end %>
 
             <div class="col-1 my-auto">
