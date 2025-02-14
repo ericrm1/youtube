@@ -11,7 +11,11 @@ class VideoController < ApplicationController
     @comments = @video.comments # Pega os comentários relacionados
 
     if logged?
-      History.create(channel_id: logged_channel.id, video_id: @video.id)
+      # puts "Logged Channel ID: #{logged_channel.id.inspect}"
+      # puts "Video ID: #{@video.id.inspect}"
+      # History.create!(channel_id: logged_channel.id, video_id: @video.id)
+      history = History.create(channel_id: logged_channel.id, video_id: @video.id)
+  puts history.errors.full_messages
     end
   end
 

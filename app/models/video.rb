@@ -3,12 +3,11 @@ class Video < ApplicationRecord
   has_one_attached :thumbnail
 
   belongs_to :channel
-  
-  has_many :histories
+
+  has_many :histories, dependent: :destroy
   has_many :watching_channels, through: :histories, source: :channel
   has_many :ratings, dependent: :destroy
-  
-  has_many :comments
+  has_many :comments, dependent: :destroy
 
   validates :title, presence: true
   validates :thumbnail, presence: true

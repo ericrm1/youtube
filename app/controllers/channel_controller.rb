@@ -20,7 +20,15 @@ before_action :authenticate, only: :history
     end 
   
     def history
-        @watched_videos = logged_channel.watched_videos
+      @channel = logged_channel
+      @watched_videos = logged_channel.watched_videos
+    end
+
+    def delete_video
+      @channel = Channel.find(params[:channel_id])
+      @video = Video.find(params[:video_id])
+      @video.destroy
+      redirect_to root_path, notice: 'Vídeo excluído com sucesso'
     end
 
     private

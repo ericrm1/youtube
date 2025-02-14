@@ -1,32 +1,31 @@
 
-<div class="thumbnail-container">
-
+<h1> Histórico de exibição </h1>
+<div class="history-container">
   <% # (1..10) == [1,2,3,4,5,6,7,8,9,10].each  %>
-  <% @watched_videos.each do |video|  %>
-    <% if video.present? %>
-      <% puts "*******************************************************************************************************************************" %> 
-      <% puts "Video ID: #{video.id}, Title: #{video.title}" %>
-      <a href="/watch?v=<%= video.id %>">
+  <% logged_channel.histories.reverse_each do |history|  %>
+    <% if history.video.present? %>
+      <h4> <%= @channel.history_view_day(history) %> </h4>
+      <a href="/watch?v=<%= history.video.id %>">
         <div class="thumbnail"> 
           <div class="thumbnail-image"> 
-            <% if video.thumbnail.attached? %>
-              <%= image_tag url_for(video.thumbnail), alt: "Thumbnail"%>
+            <% if history.video.thumbnail.attached? %>
+              <%= image_tag url_for(history.video.thumbnail), alt: "Thumbnail"%>
             <% else %>
               <%= image_tag "Thumbnails.jpg", alt: "Placeholder Thumbnail" %>
             <% end %>
           </div>
           <div class="thumbnail-infos">
               <div class="thumbnail-channel">
-                <% if video.channel.photo.attached? %>
-                  <%= image_tag url_for(video.channel.photo), alt: "Photo"%>
+                <% if history.video.channel.photo.attached? %>
+                  <%= image_tag url_for(history.video.channel.photo), alt: "Photo"%>
                 <% else %>
                   <%= image_tag "person-circle.svg" %>
                 <% end %>
               </div>
               <div class="thumbnail-details">
-                <h1><%= video.title%></h1>
-                <p><%= video.channel.name%></p>
-                <p>1,3 mi vizualizações • há 8 meses</p>
+                <h1><%= history.video.title%></h1>
+                <p><%= history.video.channel.name%></p>
+                <p> <%= history.video.views_count_string %> • <%= history.video.time_count_string %> </p>
               </div>
           </div>
         </div>
