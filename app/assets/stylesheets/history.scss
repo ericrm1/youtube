@@ -1,0 +1,54 @@
+.history-container {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 20px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.thumbnail {
+    max-width: 300px;
+    min-width: 300px;
+    cursor: pointer;
+    margin-right: 20px;
+}
+
+.thumbnail-image img:hover {
+    border-radius: 0;
+}
+
+.thumbnail-image img {
+    max-height: 200px;
+    width: 100%;
+    height: 100%;
+    border-radius: 13px;
+    object-fit: cover;
+    transition: all .3s;
+    border: #000 1px solid;
+}
+
+.thumbnail .thumbnail-infos {
+    max-width: 300px;
+    display: flex;
+    flex-direction: row;
+}
+
+.thumbnail-channel img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+.thumbnail-details h1 {
+    font-size: 16px;
+    margin: 0;
+    color: #0f0f0f;
+}
+
+.thumbnail .thumbnail-infos .thumbnail-details p {
+    font-size: 14px;
+    color: #606060;
+    margin: 2px 0;
+    text-decoration: none !important;
+}

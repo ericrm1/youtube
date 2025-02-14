@@ -18,9 +18,16 @@
                 <%= image_tag "person-circle.svg" %>
              <% end %>
             </div>
+
             <div class="col-2 watch-channel-title mx-3">
                 <strong><%= @video.channel.name%></strong>
                 <small>1,11 mi de inscritos</small>
+            </div>
+
+            <% if @video.channel == logged_channel %>
+              <div class="col-2 my-auto">
+                <%= button_to "Excluir", delete_path(@video.channel.id, @video.id), 
+                  method: :delete, class: "btn-watch-actions black-bg", style: "color:red" %>
               </div>
               <% else %>
                   <% if logged_channel && logged_channel.subscribed_channels.include?(@channel) %>

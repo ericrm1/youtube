@@ -21,4 +21,21 @@ class Channel < ApplicationRecord
         end
         return videos 
     end
+
+    def history_view_day(history)
+        return "Sem histórico" unless history
+        view_day = history.created_at.in_time_zone(Time.zone) # Ajusta para o fuso configurado no Rails
+        today = Time.zone.now
+        days = (today.to_date - view_day.to_date).to_i
+        if days < 7
+          # Retorna o dia da semana (ex: "Segunda", "Terça" ...)
+          return I18n.l(view_day, format: "%A", locale: :pt).capitalize
+        elsif days < 30
+          # Retorna o dia e o mês (ex: "1 de fev.")
+          return view_day.strftime("%-d de %b.")
+        else
+          # Retorna o dia, mês e ano (ex: "31 de dez. de 2024")
+          return view_day.strftime("%-d de %b. de %Y")
+        end
+      end
 end
