@@ -28,7 +28,10 @@
             <%= form_with url: search_path, method: :get, local: true do |form| %>
               <div class="input-group main-search-bar">
                 <%= form.text_field :prompt, class: "form-control", placeholder: "Pesquisar", aria: { label: "Recipient's username", describedby: "button-addon2" }, style: "border-bottom-left-radius:20px;border-top-left-radius:20px" %>
-                <%= form.submit image_tag('search.svg'), class: "btn btn-outline-secondary", id: "button-addon2", style: "border-bottom-right-radius:20px;border-top-right-radius:20px" %>
+                  <%= button_tag type: "submit", class: "btn btn-outline-secondary", id: "button-addon2", style: "border-bottom-right-radius:20px;border-top-right-radius:20px" do %>
+                  <%= image_tag "search.svg", alt: "Search" %>
+                  <% end %>
+
               </div>
             <% end %>
           </div>
