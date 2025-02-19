@@ -5,7 +5,7 @@ class SubscriptionsController < ApplicationController
         channel = Channel.find(params[:id])
         
             if logged_channel.subscriptions.find_by(channel: channel).nil?
-                logged_channel.subscriptions.create!(channel_id: channel.id, subscriber_id: logged_channel.id)
+                Subscription.create!(channel_id: channel.id, subscriber_id: logged_channel.id)
                 redirect_to video_watch_path(v:params[:video_id]), notice: "Você se inscreveu no canal com sucesso!"
             else
                  redirect_to video_watch_path(v:params[:video_id]), alert: "Você já está inscrito neste canal."
@@ -14,7 +14,7 @@ class SubscriptionsController < ApplicationController
     
     def unsubscribe
         channel = Channel.find(params[:id])
-        subscription = logged_channel.subscriptions.find_by(channel: channel)
+        subscription = Subscription.find_by(channel: channel, subscriber_id: logged_channel)
         if subscription
             subscription.destroy
             redirect_to video_watch_path(v:params[:video_id]), notice: "Voce cancelou sua inscrição nesse canal."

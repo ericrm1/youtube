@@ -28,5 +28,7 @@ Rails.application.routes.draw do
   delete '/video/:channel_id/:video_id/delete', to: 'channel#delete_video', as: 'delete'
   post '/channel/:id/subscribe', to: 'subscriptions#subscribe', as: 'subscribe_channel'
   delete '/channel/:id/unsubscribe', to: 'subscriptions#unsubscribe', as: 'unsubscribe_channel'
+
+  get '/search', to: 'search#search', as: 'search' 
 end
 
