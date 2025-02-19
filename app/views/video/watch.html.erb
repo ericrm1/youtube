@@ -29,13 +29,13 @@
                 <%= button_to "Excluir", delete_path(@video.channel.id, @video.id), 
                   method: :delete, class: "btn-watch-actions black-bg", style: "color:red" %>
               </div>
-              <% else %>
-                  <% if logged_channel && logged_channel.subscribed_channels.include?(@channel) %>
-                    <%= button_to 'Cancelar Inscrição', unsubscribe_channel_path(@channel, video_id: @video.id), method: :delete, class: "btn-watch-actions black-bg" %>
+            <% else %>
+                  <% if logged_channel && Subscription.all.where(subscriber_id: logged_channel.id, channel_id: @channel.id).length > 0 %>
+                    <%= button_to 'Cancelar Inscrição', unsubscribe_channel_path(id: @channel.id, video_id: @video.id), method: :delete, class: "btn-watch-actions black-bg" %>
                   <% else %>
-                    <%= button_to 'Inscrever-se', subscribe_channel_path(@channel, video_id: @video.id), method: :post, class: "btn-watch-actions black-bg" %>
-                <% end %>
-              <% end %>
+                    <%= button_to 'Inscrever-se', subscribe_channel_path(id: @channel.id, video_id: @video.id), method: :post, class: "btn-watch-actions black-bg" %>
+                  <% end %>
+            <% end %>
 
             <div class="col-1 my-auto">
               <%= button_to like_video_path(@video), method: :post, class: "btn-watch-actions white-bg" do %>
