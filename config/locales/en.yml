@@ -41,3 +41,10 @@ pt:
   date:
     day_names: ["domingo", "segunda-feira", "terça-feira", "quarta-feira", "quinta-feira", "sexta-feira", "sábado"]
     abbr_day_names: ["dom", "seg", "ter", "qua", "qui", "sex", "sáb"]
+  activerecord:
+    errors:
+      models:
+        channel:
+          attributes:
+            password: 
+              too_short: "Mínimo 6 digitos"
