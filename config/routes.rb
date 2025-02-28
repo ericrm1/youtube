@@ -9,7 +9,9 @@ Rails.application.routes.draw do
   get '/watch', to: 'video#watch', as: 'video_watch'
   get "/login", to: "channel#login", as: 'login'
   get "/new_channel", to: "channel#new", as: 'new'
+  get '/channel_profile', to: 'channel#index' 
 
+  
   post '/login', to: 'sessions#login'
   get '/logout', to: 'sessions#logout', as: :logout
   post "/new_channel", to: "channel#create", as: 'channels'
@@ -30,5 +32,6 @@ Rails.application.routes.draw do
   delete '/channel/:id/unsubscribe', to: 'subscriptions#unsubscribe', as: 'unsubscribe_channel'
 
   get '/search', to: 'search#search', as: 'search' 
+
 end
 

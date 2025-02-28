@@ -8,6 +8,11 @@ before_action :authenticate, only: :history
       @channel = Channel.new
     end
     
+    def index
+     @channel = logged_channel # canal logado
+     @videos = @channel.videos
+    end
+   
     def create
       @channel = Channel.new(channel_params)
       if @channel.save
@@ -30,6 +35,7 @@ before_action :authenticate, only: :history
       @video.destroy
       redirect_to root_path, notice: 'Vídeo excluído com sucesso'
     end
+    
 
     private
     

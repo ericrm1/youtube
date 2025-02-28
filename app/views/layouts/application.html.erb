@@ -67,10 +67,10 @@
           <%= image_tag "home.svg", class: "my-3" %>
           Início
         </a>
-        <a href="#">
+        <%= link_to channel_profile_path do %>
           <%= image_tag "person-circle.svg", class: "my-3" %>
           Perfil
-        </a>
+        <%end%>
         <% if logged? == true %>
         <a href="/history">
           <%= image_tag "history.svg", class: "my-3" %>

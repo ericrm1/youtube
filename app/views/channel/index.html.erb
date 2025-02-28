@@ -1,0 +1,50 @@
+<div class="d-flex align-items-center my-3">
+  <!-- Imagem do Canal -->
+  <div class="me-3">
+    <% if @channel.photo.attached? %>
+      <%= image_tag url_for(@channel.photo), alt: "Foto do Canal", class: "rounded-circle", style: "width: 100px; height: 100px; object-fit: cover;" %>
+    <% else %>
+      <%= image_tag "person-circle.svg", alt: "Foto Padrão", class: "rounded-circle", style: "width: 100px; height: 100px; object-fit: cover;" %>
+    <% end %>
+  </div>
+
+  <!-- Nome do Canal -->
+  <div>
+    <h4 class="fw-bold mb-0"><%= @channel.name %></h4>
+    <p class="text-muted">Seus vídeos e informações</p>
+  </div>
+</div>
+
+
+
+<h2>Meus Vídeos</h2 class= "mt-5">
+
+<!-- Listagem de Vídeos -->
+<% @videos.each do |video|  %>
+    <a href="/watch?v=<%= video.id %>">
+      <div class="thumbnail"> 
+        <div class="thumbnail-image"> 
+          <% if video.thumbnail.attached? %>
+            <%= image_tag url_for(video.thumbnail), alt: "Thumbnail"%>
+          <% else %>
+           <%= image_tag "Thumbnails.jpg", alt: "Placeholder Thumbnail" %>
+         <% end %>
+        </div>
+        <div class="thumbnail-infos">
+          <div class="thumbnail-channel">
+            <% if video.channel.photo.attached? %>
+            <%= image_tag url_for(video.channel.photo), alt: "Photo"%>
+          <% else %>
+            <%= image_tag "person-circle.svg" %>
+         <% end %>
+          </div>
+          <div class="thumbnail-details">
+            <h1><%= video.title%></h1>
+            <p><%= video.channel.name%></p>
+            <p> <%= video.views_count_string %> • <%= video.time_count_string %> </p>
+          </div>
+        </div>
+      </div>
+    </a>
+  <% end %> 
+<div>
