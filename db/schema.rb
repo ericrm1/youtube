@@ -11,6 +11,9 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema[7.0].define(version: 2025_02_08_173647) do
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -49,8 +52,8 @@ ActiveRecord::Schema[7.0].define(version: 2025_02_08_173647) do
   end
 
   create_table "comments", force: :cascade do |t|
-    t.integer "video_id", null: false
-    t.integer "channel_id", null: false
+    t.bigint "video_id", null: false
+    t.bigint "channel_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.text "content"
@@ -59,8 +62,8 @@ ActiveRecord::Schema[7.0].define(version: 2025_02_08_173647) do
   end
 
   create_table "histories", force: :cascade do |t|
-    t.integer "channel_id", null: false
-    t.integer "video_id", null: false
+    t.bigint "channel_id", null: false
+    t.bigint "video_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["channel_id"], name: "index_histories_on_channel_id"
@@ -68,8 +71,8 @@ ActiveRecord::Schema[7.0].define(version: 2025_02_08_173647) do
   end
 
   create_table "ratings", force: :cascade do |t|
-    t.integer "channel_id", null: false
-    t.integer "video_id", null: false
+    t.bigint "channel_id", null: false
+    t.bigint "video_id", null: false
     t.integer "value"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -78,8 +81,8 @@ ActiveRecord::Schema[7.0].define(version: 2025_02_08_173647) do
   end
 
   create_table "subscriptions", force: :cascade do |t|
-    t.integer "channel_id", null: false
-    t.integer "subscriber_id", null: false
+    t.bigint "channel_id", null: false
+    t.bigint "subscriber_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["channel_id"], name: "index_subscriptions_on_channel_id"
@@ -92,7 +95,7 @@ ActiveRecord::Schema[7.0].define(version: 2025_02_08_173647) do
     t.string "subtitle"
     t.integer "likes"
     t.integer "dislikes"
-    t.integer "channel_id", null: false
+    t.bigint "channel_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["channel_id"], name: "index_videos_on_channel_id"

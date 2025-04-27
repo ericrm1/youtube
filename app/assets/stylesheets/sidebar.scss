@@ -1,13 +1,15 @@
 .sidebar {
     width: 80px;
     position: fixed;
-    top: 56px; /* Abaixo da navbar */
+    top: 53px; /* Abaixo da navbar */
     left: 0;
     height: 100%;
     background-color: #fff;
     padding-top: 20px;
     padding-left: 3px;
     padding-right: 3px;
+    transition: width 0.3s ease;
+    z-index: 1000;
 }
 
 .sidebar a {
@@ -17,7 +19,7 @@
     text-align: center;
     padding: 16px 26px;
     font-size: 10px;
-    color: #333;
+    color: #333 !important;
     text-decoration: none;
 }
 
@@ -48,3 +50,39 @@
         width: 180px !important;
     }
 }
+
+.sidebar-responsiva {
+    width: 230px !important; /* Largura expandida */
+    transform: translateX(0);
+}
+
+.sidebar.recolhida {
+    transform: translateX(-80px); /* Oculta a sidebar */
+}
+
+.sidebar.sidebar-responsiva {
+    transform: translateX(0);
+    width: 200px; 
+}
+
+.sidebar {
+    display: none;
+}
+
+.sidebar.sidebar-responsiva {
+    display: block !important;
+}
+
+@media (max-width: 768px) {
+    .sidebar {
+      width: 50px; /* Largura reduzida em telas pequenas */
+    }
+    
+    .sidebar.expanded {
+      width: 150px; /* Largura expandida em telas pequenas */
+    }
+    
+    .toggle-btn {
+      display: block; /* Exibir botão de alternância */
+    }
+  }

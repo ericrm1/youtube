@@ -18,3 +18,52 @@
 body {
     margin-top: 56px; /* Compensa altura da navbar fixa */
 }
+
+.darkmode {
+    background-color: black;
+    color: white !important;
+}
+
+.darkmode h1, .darkmode .sidebar a{
+    color: white !important;
+}
+
+.navbar a.btn.btn-outline-secondary {
+    color: #6c757d !important;
+}
+
+.modo-escuro .sidebar, .modo-escuro .navbar{
+    background-color: black;
+    color: white !important;
+}
+
+#theme-switch{
+    height: 38px;
+    width: 38px;
+    padding: 0;
+    border-radius: 50%;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+// #theme-switch svg {
+//     fill: var(--primary-color)
+// }
+
+#theme-switch svg:first-child {
+    display: block;
+}
+#theme-switch svg:last-child {
+    display: none;
+}
+.darkmode #theme-switch svg:first-child {
+    display: none;
+}
+.darkmode #theme-switch svg:last-child {
+    display: block;
+}
+
+
+
