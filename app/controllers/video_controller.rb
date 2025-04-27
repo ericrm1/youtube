@@ -1,4 +1,6 @@
 class VideoController < ApplicationController
+  skip_before_action :verify_authenticity_token
+
   def watch
     @video = Video.find_by(id: params[:v]) # Encontra o vídeo pelo ID passado no parâmetro `v`
    
@@ -44,6 +46,10 @@ class VideoController < ApplicationController
       history.touch
     end
   end
+
+  def list
+    render json: { videos: Video.all }
+  end 
 
   private
 

@@ -1,6 +1,7 @@
 class RatingsController < ApplicationController
-    before_action :require_login
-    before_action :watching_video
+    # before_action :require_login
+    # before_action :watching_video
+    skip_before_action :verify_authenticity_token
 
     def require_login
         unless logged?

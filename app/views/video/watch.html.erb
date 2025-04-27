@@ -38,8 +38,8 @@
             <% end %>
 
             <div class="col-1 my-auto">
-              <%= button_to like_video_path(@video), method: :post, class: "btn-watch-actions white-bg" do %>
-                <%= image_tag "hand-thumbs-up"%> <%= @video.likes_count %> 
+              <%= button_to class: "btn-watch-actions white-bg", onclick: "giveLikeToVideo(" + @video.id + ")" do %>
+                <%= image_tag "hand-thumbs-up"%> <span id="likes-count"><%= @video.likes_count %> </span>
               <% end %>
             </div>
 
@@ -146,3 +146,15 @@
       </div>
     </div>
   </div>
+
+  <script>
+    function giveLikeToVideo(video_id) {
+        fetch(`/video/${video_id}/like`, {
+            method: "post"
+        }).then(response => {
+            response.json().then(data => {
+              
+            });
+        });
+    }
+  </script>
