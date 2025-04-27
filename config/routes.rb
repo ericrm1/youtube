@@ -18,6 +18,7 @@ Rails.application.routes.draw do
 
   get '/video/new', to: 'video#new', as: 'new_video'
   post '/video/create', to: 'video#create', as: 'create_video'
+  get '/video/list', to: 'video#list'
 
   get '/history', to: 'channel#history', as: 'history_channel'
 
