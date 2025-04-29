@@ -38,7 +38,7 @@
             <% end %>
 
             <div class="col-1 my-auto">
-              <%= button_to class: "btn-watch-actions white-bg", onclick: "giveLikeToVideo(" + @video.id + ")" do %>
+              <%= button_to class: "btn-watch-actions white-bg", onclick: "giveLikeToVideo(#{ @video.id })" do %>
                 <%= image_tag "hand-thumbs-up"%> <span id="likes-count"><%= @video.likes_count %> </span>
               <% end %>
             </div>
