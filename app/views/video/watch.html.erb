@@ -12,10 +12,10 @@
         </div>
         <div class="row mt-3">
             <div class="col-1 my-auto" style="max-width: 40px;">
-                 <% if @video.channel.photo.attached? %>
-                <%= image_tag url_for(@video.channel.photo), alt: "Photo", style: "width: 40px; height: 40px; border-radius: 50%"%>
+              <% if @video.channel.photo.attached? %>
+                <img src="<%= url_for(@video.channel.photo) %>" alt="Photo" style="width: 40px; height: 40px; border-radius: 50%" />
               <% else %>
-                <%= image_tag "person-circle.svg" %>
+                <img src="/images/person-circle.svg" />
              <% end %>
             </div>
 
@@ -39,13 +39,13 @@
 
             <div class="col-1 my-auto">
               <%= button_to class: "btn-watch-actions white-bg", onclick: "giveLikeToVideo(#{ @video.id })" do %>
-                <%= image_tag "hand-thumbs-up"%> <span id="likes-count"><%= @video.likes_count %> </span>
+                <img src="/images/hand-thumbs-up" /> <span id="likes-count"><%= @video.likes_count %> </span>
               <% end %>
             </div>
 
             <div class="col-1 my-auto">
               <%= button_to dislike_video_path(@video), method: :post, class: "btn-watch-actions white-bg" do %>
-                <%= image_tag "hand-thumbs-down"%> <%=@video.dislikes_count %> 
+                <img src="/images/hand-thumbs-down" /> <%=@video.dislikes_count %> 
               <% end %>
             </div>
 
@@ -57,7 +57,7 @@
             </div>
             <div class="col-1 my-auto">
                 <button class="btn-watch-actions white-bg">
-                    <%= image_tag "3-dots.svg" %>
+                    <img src="/images/3-dots.svg" />
                 </button>
             </div>
         </div>
@@ -80,9 +80,9 @@
                 <div class="thumbnail-suggested"> 
                     <div class="thumbnail-suggested-image"> 
                         <% if video.thumbnail.attached? %>
-                            <%= image_tag url_for(video.thumbnail), alt: "Thumbnail"%>
+                            <img src="<%= url_for(video.thumbnail) %>" alt="Thumbnail" />
                         <% else %>
-                            <%= image_tag "Thumbnails.jpg", alt: "Placeholder Thumbnail" %>
+                            <img src="/images/Thumbnails.jpg" alt="Placeholder Thumbnail" />
                         <% end %>
                     </div>
                     <div class="thumbnail-suggested-infos">
@@ -113,9 +113,9 @@
                     <div class="p-2">
                       <span class="round" style="max-width: 40px;">
                         <% if comment.channel&.photo&.attached? %>
-                          <%= image_tag url_for(comment.channel.photo), alt: "Photo", style: "width: 40px; height: 40px; border-radius: 50%" %>
+                          <img src="<%= url_for(comment.channel.photo) %>" alt="Photo" style="width: 40px; height: 40px; border-radius: 50%" />
                         <% else %>
-                          <%= image_tag "person-circle.svg" %>
+                          <img src="/images/person-circle.svg" />
                         <% end %>
                       </span>
                     </div>
